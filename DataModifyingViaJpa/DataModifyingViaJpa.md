@@ -33,14 +33,14 @@ We can initialize the tables of our database so that we can test the api with th
 ```yml
 sql:  
   init:  
-    schema-locations: classpath:DDL_TABLENAME.sql, # CREATE TABLE
-    data-locations: classpath:DML_TABLENAME.sql, # INSERT DATA
+    schema-locations: classpath:DDL_TABLENAME.sql # CREATE TABLE
+    data-locations: classpath:DML_TABLENAME.sql # INSERT DATA
     mode: always
 ```
 In the .sql file, you may want to include some *sql syntex*:
 *__DDL__ file set up:*
 ```sql
-DROP TABLE tablename;  
+DROP TABLE IF EXISTS tablename;  
   
 CREATE TABLE tablename (  
   id INTEGER AUTO_INCREMENT,  
@@ -99,7 +99,7 @@ Under `src/main/java/com.projectname`, create a folder `repository` and a **inte
 
 *Annotation:*
 - `@Repository`
-	: Provide useful method for accessing database.
+	: Provide useful method for accessing database. It is not necessary to use this annotation as JPARepository is extended.
 
 *Repository Demo Syntex:*
 ```java
